@@ -1,13 +1,8 @@
 import React from 'react';
 import { CodeAntLogo } from './CodeAntLogo';
 import { FiMenu, FiRefreshCw } from 'react-icons/fi';
-import { FaPlus } from 'react-icons/fa6';
 
-interface HeaderProps {
-  onMenuToggle: () => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
+export const Header = ({ onMenuToggle }) => {
   return (
     <header className="fixed w-full border-b lg:border-0 bg-white z-10">
       <div className="w-full flex lg:hidden items-center justify-between p-4">
@@ -32,4 +27,4 @@ export const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
 
     </header>
   );
-}
+};

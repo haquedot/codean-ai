@@ -7,26 +7,24 @@ import { LuBookText } from 'react-icons/lu';
 import { MdClose } from 'react-icons/md';
 import { TiHomeOutline } from 'react-icons/ti';
 import { CodeAntLogo } from './CodeAntLogo';
-
-interface SidebarProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+import { Link, useLocation } from 'react-router-dom';
 
 const menuItems = [
-  { icon: TiHomeOutline, label: 'Repositories' },
-  { icon: FaCode, label: 'AI Code Review' },
-  { icon: IoIosCloudOutline, label: 'Cloud Security' },
-  { icon: LuBookText, label: 'How to Use' },
-  { icon: IoSettingsOutline, label: 'Settings' },
+  { icon: TiHomeOutline, label: 'Repositories' , path: '/dashboard'},
+  { icon: FaCode, label: 'AI Code Review', path: '/dashboard/ai-code-review' },
+  { icon: IoIosCloudOutline, label: 'Cloud Security', path: '/dashboard/cloud-security' },
+  { icon: LuBookText, label: 'How to Use', path: '/dashboard/how-to-use' },
+  { icon: IoSettingsOutline, label: 'Settings', path: '/dashboard/settings' },
 ];
 
 const bottomMenuItems = [
-  { icon: FiPhone, label: 'Support' },
-  { icon: FiLogOut, label: 'Logout' },
+  { icon: FiPhone, label: 'Support', path: '/' },
+  { icon: FiLogOut, label: 'Logout', path: '/' },
 ];
 
-export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+export const Sidebar = ({ isOpen, onClose }) => {
+  const location = useLocation();
+
   return (
     <>
       {isOpen && (
@@ -59,36 +57,34 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             </div>
 
             <nav className="px-3 lg:px-0 mt-3 gap-1">
-              <div className="block">
+              <div className="block px-4">
                 {menuItems.map((item, index) => (
-                  <a
+                  <Link
                     key={index}
-                    href="#"
-                    className="flex items-center gap-3 px-8 py-3 hover:bg-gray-100 text-gray-700"
+                    to={item.path}
+                    className={`flex justify-start items-center mb-2 gap-3 px-3 py-2 hover:bg-gray-100 text-gray-700 rounded-md ${location.pathname === item.path ? 'border-2 border-blue-600 bg-blue-500 hover:bg-blue-500 text-white' : ''}`}
                   >
                     <item.icon size={20} />
                     <span>{item.label}</span>
-                  </a>
+                  </Link>
                 ))}
               </div>
-
-
             </nav>
           </div>
           <div className="block pb-8">
             {bottomMenuItems.map((item, index) => (
-              <a
+              <Link
                 key={index}
-                href="#"
-                className="flex items-center gap-3 px-12 py-3 hover:bg-gray-100 text-gray-700"
+                to={item.path}
+                className="flex items-center gap-3 px-10 py-3 hover:text-neutral-900 text-neutral-700"
               >
                 <item.icon size={20} />
                 <span>{item.label}</span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
       </div>
     </>
   );
-}
+};

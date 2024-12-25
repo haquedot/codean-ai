@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from "../assets/logo.svg";
 
-export const CodeAntLogo: React.FC = () => {
+export const CodeAntLogo = () => {
   return (
     <div className="flex items-center gap-2">
       <img 
@@ -13,3 +13,4 @@ export const CodeAntLogo: React.FC = () => {
     </div>
   );
 }
+
