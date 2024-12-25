@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const SignInButton = ({ icon, text, provider, onClick }) => {
     const navigate = useNavigate();
-
     return (
         <button
             onClick={

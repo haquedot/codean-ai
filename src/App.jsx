@@ -15,7 +15,6 @@ function App() {
 
   return (
     <>
-
       {
         location.pathname === '/' ? <Login /> : (
           <div className="min-h-screen bg-white">

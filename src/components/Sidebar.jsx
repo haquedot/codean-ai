@@ -62,7 +62,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
                   <Link
                     key={index}
                     to={item.path}
-                    className={`flex justify-start items-center mb-2 gap-3 px-3 py-2 hover:bg-gray-100 text-gray-700 rounded-md ${location.pathname === item.path ? 'border-2 border-blue-600 bg-blue-500 hover:bg-blue-500 text-white' : ''}`}
+                    className={`flex justify-start items-center mb-2 gap-3 px-3 py-2 text-gray-700 rounded-md ${location.pathname === item.path ? 'border-2 border-blue-600 bg-blue-500 hover:bg-blue-500 text-white' : 'hover:bg-gray-100'}`}
                   >
                     <item.icon size={20} />
                     <span>{item.label}</span>

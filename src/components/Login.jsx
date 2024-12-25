@@ -5,7 +5,6 @@ import { CodeAntLogo } from './CodeAntLogo';
 import SignInButton from './SignInButton';
 import StatsCard from './StatsCard';
 import { VscAzureDevops } from 'react-icons/vsc';
-
 import logoBg from '../assets/Subtract.png';
 import { IoKeyOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';

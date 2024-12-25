@@ -1,5 +1,4 @@
 import React from "react";
-
 import logo from "../assets/logo.svg";
 import pie from "../assets/pie.png";
 import {  FaArrowUp } from "react-icons/fa6";
@@ -12,7 +11,6 @@ const StatsCard = () => {
                     <img src={logo} alt="CodeAnt AI" className="h-6 w-6" />
                     <span className="font-bold">AI to Detect & Autofix Bad Code</span>
                 </div>
-
                 <div className="grid grid-cols-3 gap-4 text-center p-6">
                     <div>
                         <div className="text-xl font-bold">30+</div>
@@ -28,7 +26,6 @@ const StatsCard = () => {
                     </div>
                 </div>
             </div>
-
             <div className="ms-auto max-w-64 bg-white rounded-2xl shadow-xl px-8 py-6 -mt-4 -mr-8">
                 <div className="flex justify-between items-start gap-4">
                     <div className="block">
