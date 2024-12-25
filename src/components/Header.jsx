@@ -5,7 +5,7 @@ import { FiMenu, FiRefreshCw } from 'react-icons/fi';
 export const Header = ({ onMenuToggle }) => {
   return (
     <header className="fixed w-full border-b lg:border-0 bg-white z-10">
-      <div className="w-full flex lg:hidden items-center justify-between p-4">
+      <div className="w-full flex lg:hidden items-center justify-between px-4 py-3">
 
         <div className="flex items-center gap-4">
           <CodeAntLogo />
