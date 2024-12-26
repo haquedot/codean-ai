@@ -77,15 +77,15 @@ export const RepositoryList = () => {
           <h1 className="text-2xl font-semibold mb-1">Repositories</h1>
           <p className="text-gray-600">{repositories.length} total repositories</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 text-sm">
           <button
-            className="p-2 hover:bg-gray-100 border rounded-lg gap-2 flex items-center px-4 py-2"
+            className="p-2 hover:bg-gray-100 border rounded-lg gap-2 flex items-center px-3 sm:px-4 py-2"
             onClick={handleRefresh}
           >
             <FiRefreshCw size={20} /> <span>Refresh All</span>
           </button>
           <button
-            className="bg-blue-500 border-2 border-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-blue-700"
+            className="bg-blue-500 border-2 border-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-blue-700"
             onClick={handleModalToggle}
           >
             <FaPlus size={20} />
@@ -106,33 +106,42 @@ export const RepositoryList = () => {
       </div>
 
       <div className="lg:pb-6">
-        {filteredRepositories.map((repo, index) => (
-          <div
-            key={index}
-            className="border-t border-gray-200 p-4 lg:px-6 hover:bg-neutral-200 transition-colors cursor-pointer"
-            onClick={() => handleViewModalToggle(repo)}
-          >
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2">
-                <h3 className="text-lg font-medium text-blue-600">{repo.name}</h3>
-                <span className={`px-2 py-0.5 text-xs rounded-full border-2 border-blue-200 bg-blue-50 text-blue-700`}>
-                  {repo.isPublic ? 'Public' : 'Private'}
-                </span>
+        {
+          repositories.length > 0 ? (
+            filteredRepositories.map((repo, index) => (
+              <div
+                key={index}
+                className="border-t border-gray-200 p-4 lg:px-6 hover:bg-neutral-200 transition-colors cursor-pointer"
+                onClick={() => handleViewModalToggle(repo)}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-lg font-medium text-blue-600">{repo.name}</h3>
+                    <span className={`px-2 py-0.5 text-xs rounded-full border-2 border-blue-200 bg-blue-50 text-blue-700`}>
+                      {repo.isPublic ? 'Public' : 'Private'}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 text-sm text-neutral-900">
+                  <div className="flex items-center gap-2">
+                    {repo.language}
+                    <span className={`w-2 h-2 rounded-full bg-blue-500`}></span>
+                  </div>
+                  <span className="flex items-center gap-1">
+                    <FiDatabase size={12} />
+                    {repo.size} KB
+                  </span>
+                  <span>Updated {repo.updated}</span>
+                </div>
               </div>
+            ))
+
+          ) : (
+            <div className="text-center text-gray-600 border-t pt-6 px-4">
+              No repositories found. Add a new repository to get started.
             </div>
-            <div className="flex items-center gap-4 text-sm text-neutral-900">
-              <div className="flex items-center gap-2">
-                {repo.language}
-                <span className={`w-2 h-2 rounded-full bg-blue-500`}></span>
-              </div>
-              <span className="flex items-center gap-1">
-                <FiDatabase size={12} />
-                {repo.size} KB
-              </span>
-              <span>Updated {repo.updated}</span>
-            </div>
-          </div>
-        ))}
+          )
+        }
       </div>
 
       {isModalOpen && (
@@ -237,6 +246,17 @@ export const RepositoryList = () => {
               className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
             >
               Close
+            </button>
+            <button
+              className="ms-3 mt-4 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+              onClick={() => {
+                const updatedRepos = repositories.filter((repo) => repo.name !== selectedRepo.name);
+                setRepositories(updatedRepos);
+                setSelectedRepo(null);
+              }
+              }
+            >
+              Delete
             </button>
           </div>
         </div>
