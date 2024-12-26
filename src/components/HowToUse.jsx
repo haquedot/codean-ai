@@ -2,7 +2,7 @@ import React from 'react';
 
 export const HowToUse = () => {
     return (
-        <div>
+        <div className='py-20'>
             <h1 className='text-xl text-center'>HowToUse</h1>
         </div>
     );

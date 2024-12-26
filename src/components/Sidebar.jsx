@@ -41,7 +41,6 @@ export const Sidebar = ({ isOpen, onClose }) => {
         `}
       >
         <div className="flex flex-col h-full md:h-screen justify-between">
-          {/* Top Section */}
           <div className="block">
             <div className="flex items-center justify-between p-4 lg:p-0">
               <div className="flex items-center gap-4 lg:p-4">
@@ -60,13 +59,13 @@ export const Sidebar = ({ isOpen, onClose }) => {
               </select>
             </div>
 
-            {/* Menu Items */}
             <nav className="lg:px-0 mt-3 gap-1">
               <div className="block px-4">
                 {menuItems.map((item, index) => (
                   <Link
                     key={index}
                     to={item.path}
+                    onClick={onClose}
                     className={`flex justify-start items-center mb-2 gap-3 px-3 py-2 text-gray-700 rounded-md ${
                       location.pathname === item.path
                         ? 'border-2 border-blue-600 bg-blue-500 hover:bg-blue-500 text-white'
@@ -81,7 +80,6 @@ export const Sidebar = ({ isOpen, onClose }) => {
             </nav>
           </div>
 
-          {/* Bottom Section */}
           <div className="block pb-8">
             {bottomMenuItems.map((item, index) => (
               <Link

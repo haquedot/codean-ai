@@ -2,7 +2,7 @@ import React from 'react';
 
 export const AICodeReview = () => {
     return (
-        <div>
+        <div className='py-20'>
             <h1 className='text-xl text-center'>AICodeReview</h1>
         </div>
     );
